@@ -1,79 +1,81 @@
 import { useState } from "react";
-import emailjs from "emailjs-com";
 import React from "react";
 import Button from '@mui/material/Button';
 
-const initialState = {
-  name: "",
-  email: "",
-  message: "",
-};
+
 export const Survey = (props) => {
-  const [{ name, email, message }, setState] = useState(initialState);
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  const [userAnswers, setUserAnswers] = useState([]);
+  const questions = [
+    {
+      question: "What is your budget on Grocery this month",
+      options: [
+        100,
+        200,
+        300,
+        400
+      ]
+    },
+    {
+      question: "What is your credit score?",
+      options: [
+        "Excellent (750+)",
+        "Good (700-749)",
+        "Fair (650-699)"
+      ]
+    },
+    {
+      question: "What is your annual income?",
+      options: [
+        "$50,000 or less",
+        "$50,001 to $100,000",
+        "$100,001 or more"
+      ]
+    }
+  ];
 
-  const [selectedButton, setSelectedButton] = useState();
-
-  const handleButtonClick = (button) => {
-    setSelectedButton(button);
+  function handleAnswerSelection(selectedOption) {
+    setUserAnswers([...userAnswers, selectedOption]);
+    setCurrentQuestionIndex(currentQuestionIndex + 1);
   }
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setState((prevState) => ({ ...prevState, [name]: value }));
+  const recommendedCards = {
+    "Cash back": "Discover it Cash Back",
+    "Travel": "Chase Sapphire Preferred",
+    "Retail": "Capital One Venture"
   };
-  const clearState = () => setState({ ...initialState });
+  
+  function getRecommendedCard() {
+    let card = "";
+    console.log(userAnswers)
+    return recommendedCards[userAnswers[0]];
+  }
+  
+  function renderResult() {
+    return (
+      <div>
+        <h2>Recommended Card:</h2>
+        <p>{getRecommendedCard()}</p>
+      </div>
+    );
+  }
+  
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(name, email, message);
-    emailjs
-      .sendForm("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", e.target, "YOUR_USER_ID")
-      .then(
-        (result) => {
-          console.log(result.text);
-          clearState();
-        },
-        (error) => {
-          console.log(error.text);
-        }
-      );
-  };
   return (
     <div>
-      <div id="contact">
-        <div className="container">
-          <div className="col-md-8">
-            <div className="row">
-              <div className="section-title">
-                <h2>Let's start with your goal. Why are you looking for a new credit card?</h2>
-                <p>
-                  Choose the option that’s the closest fit.
-                </p>
-              </div>
-              <form name="sentMessage" validate onSubmit={handleSubmit}>
-                <Button variant="contained" color="success" onClick={() => handleButtonClick(1)}>Button 1</Button>
-                <Button variant="contained"  onClick={() => handleButtonClick(2)}>Button 2</Button>
-                <Button variant="contained"  onClick={() => handleButtonClick(3)}>Button 3</Button>
-                <Button variant="contained"  onClick={() => handleButtonClick(4)}>Button 4</Button>
-                <br />
-                <p>Selected button: {selectedButton}</p>
-                <Button variant="contained"  onClick={() => console.log("Next button clicked")}>Next</Button>
-
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div id="footer">
-        <div className="container text-center">
-          <p>
-            &copy; 2023 Issaaf Kattan React Land Page Template. Design by{" "}
-            <a href="http://www.templatewire.com" rel="nofollow">
-              TemplateWire
-            </a>
-          </p>
-        </div>
-      </div>
+      {currentQuestionIndex === questions.length ? renderResult() :
+        <>
+          <h2>{questions[currentQuestionIndex].question}</h2>
+          <ul>
+            {questions[currentQuestionIndex].options.map((option, index) => (
+              <li key={index}>
+                <button onClick={() => handleAnswerSelection(option)}>{option}</button>
+              </li>
+            ))}
+          </ul>
+        </>
+      }
     </div>
   );
+  
 };
