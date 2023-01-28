@@ -105,10 +105,19 @@ export const Survey = (props) => {
     //11. Capital One QuixksilverOne Cash Rewards Credit Card
     const capital_one_QuixksilverOne_saving = 0.015 * grocery_spending + 0.015 * gas_spending + 0.015 * retail_spending + 0.015 * dining_spending + 0.015 * others_spending;
 
-    //12. Capital One Savor Cash Rewards Credit Card
+    //12. Capital One Quixksilver Cash Rewards Credit Card
+    const capital_one_Quixksilver_saving = 0.015 * grocery_spending + 0.015 * gas_spending + 0.015 * retail_spending + 0.015 * dining_spending + 0.015 * others_spending;
+
+    //13. Capital One SavorOne Cash Rewards Credit Card
+    const capital_one_savorOne_saving = 0.03 * grocery_spending + 0.01 * gas_spending + 0.03 * retail_spending + 0.03 * dining_spending + 0.01 * others_spending;
+
+    //14. Capital One Savor Cash Rewards Credit Card
     const capital_one_savor_saving = 0.03 * grocery_spending + 0.01 * gas_spending + 0.01 * retail_spending + 0.04 * dining_spending + 0.01 * others_spending;
 
-    const maxReturn = Math.max(BCE_saving, BCP_saving, Schwab_saving, amazon_saving, CFF_saving, CFU_saving, instacart_saving, costco_saving, boa_saving, boa_unlimited_saving, capital_one_QuixksilverOne_saving, capital_one_savor_saving)
+    //15. Wells Fargo Active Cash Card
+    const wells_fargo_saving = 0.02 * grocery_spending + 0.02 * gas_spending + 0.02 * retail_spending + 0.02 * dining_spending + 0.02 * others_spending;
+
+    const maxReturn = Math.max(BCE_saving, BCP_saving, Schwab_saving, amazon_saving, CFF_saving, CFU_saving, instacart_saving, costco_saving, boa_saving, boa_unlimited_saving, capital_one_QuixksilverOne_saving, capital_one_Quixksilver_saving, capital_one_savorOne_saving, capital_one_savor_saving, wells_fargo_saving)
     if(BCE_saving === maxReturn) {
       return 'BCE_saving'
     }
@@ -142,9 +151,19 @@ export const Survey = (props) => {
     else if(capital_one_QuixksilverOne_saving === maxReturn) {
       return 'capital_one_QuixksilverOne_saving'
     }
+    else if(capital_one_Quixksilver_saving === maxReturn) {
+      return 'capital_one_Quixksilver_saving'
+    }
+    else if(capital_one_savorOne_saving === maxReturn) {
+      return 'capital_one_savor_saving'
+    }
     else if(capital_one_savor_saving === maxReturn) {
       return 'capital_one_savor_saving'
     }
+    else if(wells_fargo_saving === maxReturn) {
+      return 'wells_fargo_saving'
+    }
+    
 
   }
   
