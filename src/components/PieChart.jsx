@@ -89,12 +89,17 @@ export default class PieChart extends React.Component {
   render() {
     
     return (
-      <div className='row'>
-
-        <div className='row'>
-              
+      <div id="cards" className="text-center">
+      <div className="container">
+        <div className="col-md-10 col-md-offset-1 section-title">
+          <h1></h1>
+          <h2>Credit Card Recommendation</h2>
+        </div>
+        </div>
+        <div className='text-center' >
+          <div className='pie-row'>
           <div>
-            <h3>Total Spending: </h3>
+            <h3>My Budget Distribution: </h3>
               <div className='piechart'>
                   <Plot 
                     data={[
@@ -108,7 +113,7 @@ export default class PieChart extends React.Component {
 
           </div>
           <div className='form-col'>
-            <h3>Modify Current Expenses:</h3>
+            <h3>Enter My Monthly Budget:</h3>
             
             <form onSubmit={this.handleSubmit}>
               <label>
@@ -138,16 +143,22 @@ export default class PieChart extends React.Component {
 
               <input type="submit" value="Submit"/>
             </form>
+            
 
-            {this.state.card === " " ? <p> </p> :
+            
+
+          </div>
+          </div>
+
+          {this.state.card === " " ? <p> </p> :
               <div>
                 <h2>Recommended Card: { this.state.card}</h2>
               </div>
             }
-
-          </div>
         </div>
-      </div>
+
+        </div>
+
     );
 
   }

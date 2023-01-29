@@ -25,7 +25,7 @@ const App = () => {
     <div>
       <Navigation />
       <Header data={landingPageData.Header} />
-      <Features data={landingPageData.Features}/>
+      {/* <Features data={landingPageData.Features}/> */}
       <Tables />
       <PieChart data={landingPageData.Rows} />
 
