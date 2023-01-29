@@ -9,7 +9,7 @@ let today = new Date().toISOString().slice(0, 10);
 export default class PieChart extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {grocery:100,dinning:100, gas:100,retail:100,others:100, total_cash_back:0, total_spending:500.00,
+    this.state = {grocery:100,dinning:100, gas:100,retail:100,others:100, total_cash_back:0, total_spending:500.00,compare_cash_back:0,compare_id:0,
                   pie: {
                         values: [100,100,100,100,100],
                         labels: ["Grocery","Dining","Gas", "Retail", "Others"], 
@@ -23,16 +23,53 @@ export default class PieChart extends React.Component {
                     values: [100,100,100,100,100],
                     labels: ["Grocery","Dining","Gas", "Retail", "Others"], 
                     type: 'pie'
-                  }};
+                  },
+                  compare_pie: {
+                    values: [100,100,100,100,100],
+                    labels: ["Grocery","Dining","Gas", "Retail", "Others"], 
+                    type: 'pie'
+                  }
+                };
     
     this.handleGroceryChange = this.handleGroceryChange.bind(this);
     this.handleDinningChange = this.handleDinningChange.bind(this);
     this.handleGasChange = this.handleGasChange.bind(this);
     this.handleRetailChange = this.handleRetailChange.bind(this);
     this.handleOthersChange = this.handleOthersChange.bind(this);
+    this.handleCompareChange = this.handleCompareChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  handleCompareChange(event) {
+    // this.setState({grocery: event.target.value});
+    let u_compare_id = event.target.value;
+    this.setState({compare_id:parseInt(u_compare_id)});
+    
+    let u_grocery = parseInt(this.state.grocery);
+    let u_dinning = parseInt(this.state.dinning);
+    let u_gas = parseInt(this.state.gas);
+    let u_retail = parseInt(this.state.retail);
+    let u_others = parseInt(this.state.others);
+    
+    let curr = this.props.data[0][u_compare_id];
+    let compare_grocery = u_grocery * parseInt(curr.grocery) * 0.01;
+    let compare_gas= u_gas * parseInt(curr.gas) * 0.01;
+    let compare_retail = u_retail * parseInt(curr.online) * 0.01;
+    let compare_dinning = u_dinning * parseInt(curr.dinning) * 0.01;
+    let compare_others = u_others * parseInt(curr.other) * 0.01;
+    
+    let compare_vals = [compare_grocery, compare_gas, compare_retail, compare_dinning, compare_others ];
+    this.setState({compare_cash_back: (parseInt(curr.offer)/12 -  parseInt(curr.fee)/12 + compare_grocery + compare_gas + compare_retail +  compare_dinning+ compare_others).toFixed(2)});
+    
+    const compare_current = { values: compare_vals,
+      labels: ["Grocery","Dining","Gas", "Retail", "Others"], 
+      type: 'pie',
+      hovertemplate: '%{label} Cashback: %{value:$.2f}<extra></extra>'
+    }
+    this.setState({ compare_pie: compare_current });
+    console.log(compare_current);
+
+  }
   handleGroceryChange(event) {
     this.setState({grocery: event.target.value});
   }
@@ -106,6 +143,24 @@ export default class PieChart extends React.Component {
       hovertemplate: '%{label} Cashback: %{value:$.2f}<extra></extra>'
     }
     this.setState({ cash_back_pie: cash__back_current });
+
+    let curr = this.props.data[0][this.state.compare_id];
+    let compare_grocery = u_grocery * parseInt(curr.grocery) * 0.01;
+    let compare_gas= u_gas * parseInt(curr.gas) * 0.01;
+    let compare_retail = u_retail * parseInt(curr.online) * 0.01;
+    let compare_dinning = u_dinning * parseInt(curr.dinning) * 0.01;
+    let compare_others = u_others * parseInt(curr.other) * 0.01;
+    
+    let compare_vals = [compare_grocery, compare_gas, compare_retail, compare_dinning, compare_others ];
+    this.setState({compare_cash_back: (parseInt(curr.offer)/12 -  parseInt(curr.fee)/12 + compare_grocery + compare_gas + compare_retail +  compare_dinning+ compare_others).toFixed(2)});
+    console.log(parseInt(curr.grocery));
+    
+    const compare_current = { values: compare_vals,
+      labels: ["Grocery","Dining","Gas", "Retail", "Others"], 
+      type: 'pie',
+      hovertemplate: '%{label} Cashback: %{value:$.2f}<extra></extra>'
+    }
+    this.setState({ compare_pie: compare_current });
   }
 
    
@@ -207,31 +262,31 @@ export default class PieChart extends React.Component {
               <td>
               {this.state.card === " " ? <p> </p> :
                   <div>
-                                       <select>
-                    <option value="0">American Express Blue Cash Everyday Card (BCE)</option>
-                    <option value="1">American Express Blue Cash Preferred Card (BCP)</option>
-                    <option value="2">American Express Schwab Investor Card</option>
-                    <option value="3">Bank of America Customized Cash Rewards Credit Card</option>
-                    <option value="4">Bank of America Unlimited Cash Rewards Credit Card</option>
-                    <option value="5">Capital One QuixksilverOne Cash Rewards Credit Card</option>
-                    <option value="6">Capital One Quicksilver Cash Rewards Credit Card</option>
-                    <option value="7">Capital One SavorOne Cash Rewards Credit Card</option>
-                    <option value="8">Capital One Savor Cash Rewards Credit Card</option>
-                    <option value="9">Chase mazon Prime Credit Card</option>
-                    <option value="10">Chase Freedom Flex (CFF)</option>
-                    <option value="11">Chase Freedom Unlimited (CFU)</option>
-                    <option value="12">Chase Instacart Credit Card</option>
-                    <option value="13">Costco Anywhere Visa Card</option>
-                    <option value="14">Wells Fargo Active Cash Card</option>
-                   </select>
+                      <select onChange={this.handleCompareChange}>
+                        <option value="0">American Express Blue Cash Everyday Card (BCE)</option>
+                        <option value="1">American Express Blue Cash Preferred Card (BCP)</option>
+                        <option value="2">American Express Schwab Investor Card</option>
+                        <option value="3">Bank of America Customized Cash Rewards Credit Card</option>
+                        <option value="4">Bank of America Unlimited Cash Rewards Credit Card</option>
+                        <option value="5">Capital One QuixksilverOne Cash Rewards Credit Card</option>
+                        <option value="6">Capital One Quicksilver Cash Rewards Credit Card</option>
+                        <option value="7">Capital One SavorOne Cash Rewards Credit Card</option>
+                        <option value="8">Capital One Savor Cash Rewards Credit Card</option>
+                        <option value="9">Chase Amazon Prime Credit Card</option>
+                        <option value="10">Chase Freedom Flex (CFF)</option>
+                        <option value="11">Chase Freedom Unlimited (CFU)</option>
+                        <option value="12">Chase Instacart Credit Card</option>
+                        <option value="13">Costco Anywhere Visa Card</option>
+                        <option value="14">Wells Fargo Active Cash Card</option>
+                      </select>
                     <Plot 
                         data={[
-                          this.state.cash_back_pie,
+                          this.state.compare_pie,
                         ]}
                         layout={this.state.layout}
                         revision={this.state.revision}
                     />
-                    <h3>Total Cashback: $<u>{this.state.total_cash_back}</u></h3>
+                    <h3>Total Cashback: $<u>{this.state.compare_cash_back}</u></h3>
                   </div>
                   }
               </td>
