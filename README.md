@@ -1,6 +1,8 @@
-## Deployment: https://aws-deploy.d3w0cvqo4yb741.amplifyapp.com/
+## Deployment: 
+https://aws-deploy.d3w0cvqo4yb741.amplifyapp.com/
 
-## Tech Stacks: React, Node, AWS
+## Tech Stacks
+React, Node, AWS
 
 ## Inspiration
 As a college student, there are so many things to do. We have to do homework, housework, and etc... We also have to take care of the finance without help from guardian. In a busy schedule everyday, it would be great if someone could help us for free about finance issues. And we saw the challenge topic at TAMUHack. As time goes, there are kiosk instead of check in table in the restaurant. People started to use credit cards more than cash. So, we thought having a beneficial credit card as a college student will be good to save money.
