@@ -17,7 +17,7 @@ export const Header = (props) => {
                   href="#features"
                   className="btn btn-custom btn-lg page-scroll"
                 >
-                  Learn more about the available cards
+                  Learn more about the features
                 </a>{" "}
               </div>
             </div>

@@ -117,5 +117,27 @@
 { "id": 18, "company": "Capital One", "name": "Capital One Savor Cash Rewards Credit Card", "fee": 95, "purpose": "All", "offer": 300, "grocery": 3, "gas": 1, "online": 1, "dining": 4, "other": 1 },
 { "id": 19, "company": "Wells Fargo", "name": "Wells Fargo Active Cash Card", "fee": 0, "purpose": "All", "offer": 250, "grocery": 2, "gas": 2, "online": 2, "dining": 2, "other": 2 }
 
-  ]]
+  ]],
+  "Features": [
+    {
+      "icon": "fa fa-comments-o",
+      "title": "Check available credit cards",
+      "text": "Lorem ipsum dolor sit amet placerat facilisis felis mi in tempus eleifend pellentesque natoque etiam."
+    },
+    {
+      "icon": "fa fa-bullhorn",
+      "title": "Lorem ipsum",
+      "text": "Lorem ipsum dolor sit amet placerat facilisis felis mi in tempus eleifend pellentesque natoque etiam."
+    },
+    {
+      "icon": "fa fa-group",
+      "title": "Lorem ipsum",
+      "text": "Lorem ipsum dolor sit amet placerat facilisis felis mi in tempus eleifend pellentesque natoque etiam."
+    },
+    {
+      "icon": "fa fa-magic",
+      "title": "Lorem ipsum",
+      "text": "Lorem ipsum dolor sit amet placerat facilisis felis mi in tempus eleifend pellentesque natoque etiam."
+    }
+  ]
 }
