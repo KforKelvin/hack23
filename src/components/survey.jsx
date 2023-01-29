@@ -1,79 +1,126 @@
 import { useState } from "react";
-import emailjs from "emailjs-com";
 import React from "react";
 import Button from '@mui/material/Button';
 
-const initialState = {
-  name: "",
-  email: "",
-  message: "",
-};
+
 export const Survey = (props) => {
-  const [{ name, email, message }, setState] = useState(initialState);
 
-  const [selectedButton, setSelectedButton] = useState();
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  const [userAnswers, setUserAnswers] = useState([]);
+  const questions = [
+    {
+      question: "What is your budget on Grocery this month?",
+      options: [
+        100,
+        200,
+        300,
+        400
+      ]
+    },
+    {
+      question: "What is your budget on Gas this month?",
+      options: [
+        100,
+        200,
+        300,
+        400,
+      ]
+    },
+    {
+      question: "What is your budget on Online Retail this month?",
+      options: [
+        100,
+        200,
+        300,
+        400,
+      ]
+    },
+    {
+      question: "What is your budget on Dining this month?",
+      options: [
+        100,
+        200,
+        300,
+        400,
+      ]
+    },
+    {
+      question: "What is your budget on Others this month?",
+      options: [
+        100,
+        200,
+        300,
+        400,
+      ]
+    }
+  ];
 
-  const handleButtonClick = (button) => {
-    setSelectedButton(button);
+  function handleAnswerSelection(selectedOption) {
+    setUserAnswers([...userAnswers, selectedOption]);
+    setCurrentQuestionIndex(currentQuestionIndex + 1);
   }
+  
+  function getRecommendedCard() {
+    const grocery_spending = userAnswers[0];
+    const gas_spending = userAnswers[1];
+    const retail_spending = userAnswers[2];
+    const dining_spending = userAnswers[3];
+    const others_spending = userAnswers[4];
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setState((prevState) => ({ ...prevState, [name]: value }));
-  };
-  const clearState = () => setState({ ...initialState });
+    let benefitsArr = new Array(props.data[0].length)
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(name, email, message);
-    emailjs
-      .sendForm("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", e.target, "YOUR_USER_ID")
-      .then(
-        (result) => {
-          console.log(result.text);
-          clearState();
-        },
-        (error) => {
-          console.log(error.text);
-        }
-      );
-  };
+    for (let i = 0; i < props.data[0].length; i++) {
+      let {offer, fee, grocery, gas, online, dining, other} = props.data[0][i];
+      //console.log(offer, fee, grocery, gas, online, dining, other)
+      let benefit = offer/12 - fee/12 + grocery_spending * grocery * 0.01 + gas_spending * gas * 0.01 + retail_spending * online * 0.01 + dining_spending * dining * 0.01 + others_spending * other * 0.01;
+      benefitsArr[i] = benefit;
+    }
+
+    console.log(benefitsArr);
+
+    let max_benefit_idx = benefitsArr.indexOf(Math.max(...benefitsArr));
+    console.log(max_benefit_idx)
+
+    return props.data[0][max_benefit_idx].name; 
+
+  }
+  
+  function renderResult() {
+    return (
+      <div>
+        <h2>Recommended Card: { getRecommendedCard()}</h2>
+      </div>
+    );
+  }
+  
+
   return (
+    <div id="survey" className="text-center">
+    <div className="container">
+      <div className="col-md-10 col-md-offset-1 section-title">
+        <h2>Survey</h2>
+      </div>
     <div>
-      <div id="contact">
+      {currentQuestionIndex === questions.length ? renderResult() :
         <div className="container">
-          <div className="col-md-8">
-            <div className="row">
-              <div className="section-title">
-                <h2>Let's start with your goal. Why are you looking for a new credit card?</h2>
-                <p>
-                  Choose the option that’s the closest fit.
-                </p>
-              </div>
-              <form name="sentMessage" validate onSubmit={handleSubmit}>
-                <Button variant="contained" color="success" onClick={() => handleButtonClick(1)}>Button 1</Button>
-                <Button variant="contained"  onClick={() => handleButtonClick(2)}>Button 2</Button>
-                <Button variant="contained"  onClick={() => handleButtonClick(3)}>Button 3</Button>
-                <Button variant="contained"  onClick={() => handleButtonClick(4)}>Button 4</Button>
-                <br />
-                <p>Selected button: {selectedButton}</p>
-                <Button variant="contained"  onClick={() => console.log("Next button clicked")}>Next</Button>
-
-              </form>
-            </div>
+          <div className="col-md-10 col-md-offset-1 section-title">
+            <h3>{questions[currentQuestionIndex].question}</h3>
           </div>
+          <div className="col-md-10 col-md-offset-1 section-title">
+            <ul>
+              {questions[currentQuestionIndex].options.map((option, index) => (
+                <li key={index}>
+                  <button onClick={() => handleAnswerSelection(option)}>{option}</button>
+                </li>
+              ))}
+            </ul>
+          </div>
+          
         </div>
-      </div>
-      <div id="footer">
-        <div className="container text-center">
-          <p>
-            &copy; 2023 Issaaf Kattan React Land Page Template. Design by{" "}
-            <a href="http://www.templatewire.com" rel="nofollow">
-              TemplateWire
-            </a>
-          </p>
-        </div>
-      </div>
+      }
+    </div>
+    </div>
     </div>
   );
+  
 };
