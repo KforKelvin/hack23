@@ -1,6 +1,6 @@
 {
   "name": "landingpage-react-template",
-  "homepage":"https://hack23.github.io/react-gh-pages",
+  "homepage": "https://kforkelvin.github.io/hack23/react-gh-pages",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.10.5",
@@ -19,8 +19,8 @@
     "smooth-scroll": "^16.1.3"
   },
   "scripts": {
-    "predeploy":"npm run build",
-    "deploy":"gh-pages -d build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
