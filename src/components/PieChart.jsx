@@ -29,8 +29,37 @@ export default class PieChart extends React.Component {
     this.handleRetailChange = this.handleRetailChange.bind(this);
     this.handleOthersChange = this.handleOthersChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.setUpDropdown = this.setUpDropdown.bind(this);
+    this.getDropdownvalues = this.getDropdownvalues.bind(this);
+    
   }
+  setUpDropdown (){
 
+    return(
+      <div>
+
+        {this.getDropdownvalues}
+      </div>
+    )
+  }
+  getDropdownvalues (){
+    var select = document.createElement("select");
+    select.id = "cards-dropdown";
+    console.log(select);
+    let options = this.props.data.data;
+    
+    for(var i = 0; i < options.length; i++) {
+      var opt = options[i];
+      var el = document.createElement("option");
+      el.textContent = opt.name;
+      el.value = opt.name;
+      select.appendChild(el);
+    }
+    console.log(select);
+    return select;
+  }
+  
   handleGroceryChange(event) {
     this.setState({grocery: event.target.value});
   }
@@ -106,6 +135,7 @@ export default class PieChart extends React.Component {
     this.setState({ cash_back_pie: cash__back_current });
   }
 
+
    
   
   render() {
@@ -120,7 +150,7 @@ export default class PieChart extends React.Component {
         </div>
         
         
-        <table class="table">
+        <table className="table">
           <tbody>
             <tr>
               <td>
@@ -198,14 +228,31 @@ export default class PieChart extends React.Component {
               <td>
               {this.state.card === " " ? <p> </p> :
                   <div>
-                    <h3>Recommended Card: { this.state.card}</h3>
+                   <select>
+                    <option value="0">American Express Blue Cash Everyday Card (BCE)</option>
+                    <option value="1">American Express Blue Cash Preferred Card (BCP)</option>
+                    <option value="2">American Express Schwab Investor Card</option>
+                    <option value="3">Bank of America Customized Cash Rewards Credit Card</option>
+                    <option value="4">Bank of America Unlimited Cash Rewards Credit Card</option>
+                    <option value="5">Capital One QuixksilverOne Cash Rewards Credit Card</option>
+                    <option value="6">Capital One Quicksilver Cash Rewards Credit Card</option>
+                    <option value="7">Capital One SavorOne Cash Rewards Credit Card</option>
+                    <option value="8">Capital One Savor Cash Rewards Credit Card</option>
+                    <option value="9">Chase mazon Prime Credit Card</option>
+                    <option value="10">Chase Freedom Flex (CFF)</option>
+                    <option value="11">Chase Freedom Unlimited (CFU)</option>
+                    <option value="12">Chase Instacart Credit Card</option>
+                    <option value="13">Costco Anywhere Visa Card</option>
+                    <option value="14">Wells Fargo Active Cash Card</option>
+                   </select>
+                    
                     <Plot 
                         data={[
                           this.state.cash_back_pie,
                         ]}
                         layout={this.state.layout}
                         revision={this.state.revision}
-                    />
+                        />
                     <h3>Total Cashback: $<u>{this.state.total_cash_back}</u></h3>
                   </div>
                   }
@@ -220,3 +267,4 @@ export default class PieChart extends React.Component {
 
   }
 };
+
