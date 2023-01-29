@@ -4,6 +4,7 @@ import Button from '@mui/material/Button';
 
 
 export const Survey = (props) => {
+
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [userAnswers, setUserAnswers] = useState([]);
   const questions = [
@@ -58,12 +59,6 @@ export const Survey = (props) => {
     setUserAnswers([...userAnswers, selectedOption]);
     setCurrentQuestionIndex(currentQuestionIndex + 1);
   }
-
-  // const recommendedCards = {
-  //   "Cash back": "Discover it Cash Back",
-  //   "Travel": "Chase Sapphire Preferred",
-  //   "Retail": "Capital One Venture"
-  // };
   
   function getRecommendedCard() {
     const grocery_spending = userAnswers[0];
@@ -71,126 +66,60 @@ export const Survey = (props) => {
     const retail_spending = userAnswers[2];
     const dining_spending = userAnswers[3];
     const others_spending = userAnswers[4];
-    
-    //1. BCE saving 
-    const BCE_saving = 0.03 * grocery_spending + 0.03 * gas_spending + 0.03 * retail_spending + 0.01 * dining_spending + 0.01 * others_spending;
 
-    //2. BCP saving
-    const BCP_saving = 0.06 * grocery_spending + 0.03 * gas_spending + 0.03 * retail_spending + 0.01 * dining_spending + 0.01 * others_spending;
+    let benefitsArr = new Array(props.data[0].length)
 
-    //3. Schwab Investor Card
-    const Schwab_saving = 0.015 * grocery_spending + 0.015 * gas_spending + 0.015 * retail_spending + 0.015 * dining_spending + 0.015 * others_spending;
+    for (let i = 0; i < props.data[0].length; i++) {
+      let {offer, fee, grocery, gas, online, dining, other} = props.data[0][i];
+      //console.log(offer, fee, grocery, gas, online, dining, other)
+      let benefit = offer/12 - fee/12 + grocery_spending * grocery * 0.01 + gas_spending * gas * 0.01 + retail_spending * online * 0.01 + dining_spending * dining * 0.01 + others_spending * other * 0.01;
+      benefitsArr[i] = benefit;
+    }
 
-    //4. Amazon Prime Credit Card
-    const amazon_saving = 0.02 * grocery_spending + 0.02 * gas_spending + 0.05 * retail_spending + 0.01 * dining_spending + 0.01 * others_spending;
+    console.log(benefitsArr);
 
-    //5. Freedom Flex (CFF)
-    const CFF_saving = 0.03 * grocery_spending + 0.01 * gas_spending + 0.01 * retail_spending + 0.03 * dining_spending + 0.01 * others_spending;
+    let max_benefit_idx = benefitsArr.indexOf(Math.max(...benefitsArr));
+    console.log(max_benefit_idx)
 
-    //6. Freedom Unlimited (CFU)
-    const CFU_saving = 0.03 * grocery_spending + 0.03 * gas_spending + 0.015 * retail_spending + 0.03 * dining_spending + 0.015 * others_spending;
-
-    //7. Instacart Credit Card
-    const instacart_saving = 0.02 * grocery_spending + 0.02 * gas_spending + 0.05 * retail_spending + 0.02 * dining_spending + 0.01 * others_spending;
-
-    //8. Costco Anywhere Visa Card
-    const costco_saving = 0.01 * grocery_spending + 0.04 * gas_spending + 0.02 * retail_spending + 0.03 * dining_spending + 0.01 * others_spending;
-
-    //9. Bank of America Customized Cash Rewards Credit Card
-    const boa_saving = 0.03 * grocery_spending + 0.03 * gas_spending + 0.03 * retail_spending + 0.03 * dining_spending + 0.01 * others_spending;
-
-    //10. Bank of America Unlimited Cash Rewards Credit Card
-    const boa_unlimited_saving = 0.015 * grocery_spending + 0.015 * gas_spending + 0.015 * retail_spending + 0.015 * dining_spending + 0.015 * others_spending;
-
-    //11. Capital One QuixksilverOne Cash Rewards Credit Card
-    const capital_one_QuixksilverOne_saving = 0.015 * grocery_spending + 0.015 * gas_spending + 0.015 * retail_spending + 0.015 * dining_spending + 0.015 * others_spending;
-
-    //12. Capital One Quixksilver Cash Rewards Credit Card
-    const capital_one_Quixksilver_saving = 0.015 * grocery_spending + 0.015 * gas_spending + 0.015 * retail_spending + 0.015 * dining_spending + 0.015 * others_spending;
-
-    //13. Capital One SavorOne Cash Rewards Credit Card
-    const capital_one_savorOne_saving = 0.03 * grocery_spending + 0.01 * gas_spending + 0.03 * retail_spending + 0.03 * dining_spending + 0.01 * others_spending;
-
-    //14. Capital One Savor Cash Rewards Credit Card
-    const capital_one_savor_saving = 0.03 * grocery_spending + 0.01 * gas_spending + 0.01 * retail_spending + 0.04 * dining_spending + 0.01 * others_spending;
-
-    //15. Wells Fargo Active Cash Card
-    const wells_fargo_saving = 0.02 * grocery_spending + 0.02 * gas_spending + 0.02 * retail_spending + 0.02 * dining_spending + 0.02 * others_spending;
-
-    const maxReturn = Math.max(BCE_saving, BCP_saving, Schwab_saving, amazon_saving, CFF_saving, CFU_saving, instacart_saving, costco_saving, boa_saving, boa_unlimited_saving, capital_one_QuixksilverOne_saving, capital_one_Quixksilver_saving, capital_one_savorOne_saving, capital_one_savor_saving, wells_fargo_saving)
-    if(BCE_saving === maxReturn) {
-      return 'BCE_saving'
-    }
-    else if(BCP_saving === maxReturn) {
-      return 'BCP_saving'
-    }
-    else if(Schwab_saving === maxReturn) {
-      return 'Schwab_saving'
-    }
-    else if(amazon_saving === maxReturn) {
-      return 'amazon_saving'
-    }
-    else if(CFF_saving === maxReturn) {
-      return 'CFF_saving'
-    }
-    else if(CFU_saving === maxReturn) {
-      return 'CFU_saving'
-    }
-    else if(instacart_saving === maxReturn) {
-      return 'instacart_saving'
-    }
-    else if(costco_saving === maxReturn) {
-      return 'costco_saving'
-    }
-    else if(boa_saving === maxReturn) {
-      return 'boa_saving'
-    }
-    else if(boa_unlimited_saving === maxReturn) {
-      return 'boa_unlimited_saving'
-    }
-    else if(capital_one_QuixksilverOne_saving === maxReturn) {
-      return 'capital_one_QuixksilverOne_saving'
-    }
-    else if(capital_one_Quixksilver_saving === maxReturn) {
-      return 'capital_one_Quixksilver_saving'
-    }
-    else if(capital_one_savorOne_saving === maxReturn) {
-      return 'capital_one_savor_saving'
-    }
-    else if(capital_one_savor_saving === maxReturn) {
-      return 'capital_one_savor_saving'
-    }
-    else if(wells_fargo_saving === maxReturn) {
-      return 'wells_fargo_saving'
-    }
-    
+    return props.data[0][max_benefit_idx].name; 
 
   }
   
   function renderResult() {
     return (
       <div>
-        <h2>Recommended Card:</h2>
-        <p>{getRecommendedCard()}</p>
+        <h2>Recommended Card: { getRecommendedCard()}</h2>
       </div>
     );
   }
   
 
   return (
+    <div id="survey" className="text-center">
+    <div className="container">
+      <div className="col-md-10 col-md-offset-1 section-title">
+        <h2>Survey</h2>
+      </div>
     <div>
       {currentQuestionIndex === questions.length ? renderResult() :
-        <>
-          <h2>{questions[currentQuestionIndex].question}</h2>
-          <ul>
-            {questions[currentQuestionIndex].options.map((option, index) => (
-              <li key={index}>
-                <button onClick={() => handleAnswerSelection(option)}>{option}</button>
-              </li>
-            ))}
-          </ul>
-        </>
+        <div className="container">
+          <div className="col-md-10 col-md-offset-1 section-title">
+            <h3>{questions[currentQuestionIndex].question}</h3>
+          </div>
+          <div className="col-md-10 col-md-offset-1 section-title">
+            <ul>
+              {questions[currentQuestionIndex].options.map((option, index) => (
+                <li key={index}>
+                  <button onClick={() => handleAnswerSelection(option)}>{option}</button>
+                </li>
+              ))}
+            </ul>
+          </div>
+          
+        </div>
       }
+    </div>
+    </div>
     </div>
   );
   
