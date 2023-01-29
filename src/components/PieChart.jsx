@@ -50,13 +50,13 @@ export default class PieChart extends React.Component {
   handleSubmit(event) {
     
     event.preventDefault();
-    let u_grocery = this.state.grocery;
-    let u_dinning = this.state.dinning
-    let u_gas = this.state.gas;
-    let u_retail = this.state.retail;
-    let u_others = this.state.others;
+    let u_grocery = parseInt(this.state.grocery);
+    let u_dinning = parseInt(this.state.dinning);
+    let u_gas = parseInt(this.state.gas);
+    let u_retail = parseInt(this.state.retail);
+    let u_others = parseInt(this.state.others);
     let vals = [u_grocery,u_dinning,u_gas, u_retail, u_others];
-    this.setState({total_spending: u_grocery+u_dinning+u_gas+u_retail+u_others});
+    this.setState({total_spending: (u_grocery+u_dinning+u_gas+u_retail+u_others).toFixed(2)});
     
     const current = { values: vals,
                       labels: ["Grocery","Dining","Gas", "Retail", "Others"], 
@@ -97,7 +97,7 @@ export default class PieChart extends React.Component {
     let cash_others = u_others * other * 0.01;
     
     let cash_back_vals = [cash_grocery, cash_gas, cash_retail, cash_dinning, cash_others ];
-    this.setState({total_cash_back: offer/12 - fee/12 + cash_grocery + cash_gas + cash_retail + cash_dinning + cash_others});
+    this.setState({total_cash_back: (offer/12 - fee/12 + cash_grocery + cash_gas + cash_retail + cash_dinning + cash_others).toFixed(2)});
     const cash__back_current = { values: cash_back_vals,
       labels: ["Grocery","Dining","Gas", "Retail", "Others"], 
       type: 'pie',
