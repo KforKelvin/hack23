@@ -28,21 +28,29 @@ export const Navigation = (props) => {
         >
           <ul className="nav navbar-nav navbar-right">
 
+          <li>
+                <a href="#about" className="page-scroll">
+                <button type="button" class="btn btn-light btn-lg" data-toggle="modal">
+                  About
+                </button>
+                </a>
+              </li>
+
+              <li>
+                <a data-target="#exampleModal" className="page-scroll">
+                <button type="button" class="btn btn-light btn-lg"  data-toggle="modal" data-target="#exampleModal" >
+                  Experince Chat
+                </button>
+                </a>
+              </li>
+
+
+              
             <li>
-              <a href="#survey" className="page-scroll">
-                Survey
-              </a>
-            </li>
-            <li>
-              <a href="#about" className="page-scroll">
-                About
-              </a>
-            </li>
-            <li>
+
+              
             {/* <!-- Button trigger modal --> */}
-              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                Experince Chat
-              </button>
+              
               
             </li>
             {/* <li>
