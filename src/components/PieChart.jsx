@@ -13,7 +13,7 @@ export default class PieChart extends React.Component {
                         labels: ["Grocery","Dinning","Gas", "Retail", "Others"], 
                         type: 'pie'
                        },
-                  layout: { datarevision: 0, legend: {"orientation": "h"},margin: {l:0, r:0, b:0, t:0},},
+                  layout: { datarevision: 0, legend: {"orientation": "h"},margin: {l:0, r:0, b:0, t:0},hieght: 300,width: 300,},
                   revision: 0};
     
     this.handleGroceryChange = this.handleGroceryChange.bind(this);
@@ -37,7 +37,7 @@ export default class PieChart extends React.Component {
     this.setState({retail: event.target.value});
   }
   handleOthersChange(event) {
-    this.setState({Others: event.target.value});
+    this.setState({others: event.target.value});
   }
 
   handleSubmit(event) {
@@ -58,7 +58,8 @@ export default class PieChart extends React.Component {
     this.setState({ pie: current });
     this.setState({ revision: this.state.revision + 1 });
     this.setState({ layout: { datarevision:this.state.revision + 1,
-                      
+                              hieght: 300,
+                              width: 300,
                               legend: {"orientation": "h"},
                               margin: {l:0, r:0, b:0, t:0},} });
     
@@ -73,9 +74,8 @@ export default class PieChart extends React.Component {
         <div className='row'>
               
           <div>
-            <h3>BoA Unlimited Cash Rewards</h3>
-            <h3>Total Savings: </h3>
-              <div className='row'>
+            <h3>Total Cashback: </h3>
+              <div className='piechart'>
                   <Plot 
                     data={[
                       this.state.pie,
@@ -84,7 +84,21 @@ export default class PieChart extends React.Component {
                     revision={this.state.revision}
                     graphDiv="graph"
                   />
-                </div>
+              </div>
+
+          </div>
+          <div>
+            <h3>Total Spending: </h3>
+              <div className='piechart'>
+                  <Plot 
+                    data={[
+                      this.state.pie,
+                    ]}
+                    layout={this.state.layout}
+                    revision={this.state.revision}
+                    graphDiv="graph"
+                  />
+              </div>
 
           </div>
           <div className='form-col'>
