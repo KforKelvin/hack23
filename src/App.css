@@ -23,6 +23,10 @@
   padding: 10px;
   width: 20%;
 }
+.view-row {
+  display: block;
+  margin: auto;
+}
 
 .form-col {
   display: block;

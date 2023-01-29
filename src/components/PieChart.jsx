@@ -74,7 +74,6 @@ export default class PieChart extends React.Component {
 
     for (let i = 0; i < benefit_len; i++) {
       let {offer, fee, grocery, gas, online, dinning, other} = this.props.data[0][i];
-      console.log(other);
       let benefit = offer/12 - fee/12 
                     + u_grocery * grocery * 0.01 
                     + u_gas * gas * 0.01 
@@ -82,14 +81,11 @@ export default class PieChart extends React.Component {
                     + u_dinning * dinning * 0.01 
                     + u_others * other * 0.01;
       benefitsArr[i] = benefit;
-      console.log(benefit);
     }
 
-    console.log(benefitsArr);
     let max_benefit_idx = benefitsArr.indexOf(Math.max(...benefitsArr));
 
     this.setState({card : this.props.data[0][max_benefit_idx].name}); 
-    alert(this.state.card);
     let {offer, fee, grocery, gas, online, dinning, other} = this.props.data[0][max_benefit_idx];
     let cash_grocery = u_grocery * grocery * 0.01;
     let cash_gas= u_gas * gas * 0.01;
@@ -110,10 +106,10 @@ export default class PieChart extends React.Component {
   render() {
     
     return (
-      <div id="cards" className="text-center">
+      <div id="cards" className="text-center view-row">
         <div className="container">
           <div className="col-md-10 col-md-offset-1 section-title">
-            <h1></h1>
+            <h1> </h1>
             <h2>Credit Card Recommendation</h2>
           </div>
         </div>
@@ -171,8 +167,8 @@ export default class PieChart extends React.Component {
 
         {this.state.card === " " ? <p> </p> :
             <div>
-                <h2>Recommended Card: { this.state.card}</h2>
-
+                <h3>Recommended Card: { this.state.card}</h3>
+                <h3>Cashback Sources: </h3>
                 <Plot 
                     data={[
                       this.state.cash_back_pie,
