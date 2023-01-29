@@ -44,6 +44,14 @@ export const Tables = (props) => {
       <div className="col-md-10 col-md-offset-1 section-title">
         <h2>Available Cards</h2>
       </div>
+
+      <p>
+        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+         Show all cards in current database
+        </button>
+      </p>
+      <div class="collapse" id="collapseExample">
+        <div class="card card-body">
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead>
@@ -63,8 +71,8 @@ export const Tables = (props) => {
           <TableBody>
             {rows.map((row) => (
               <TableRow 
-                key={row.name}
-                sx={{ '&:last-child td, &:last-child th': { border: 0 }}}
+              key={row.name}
+              sx={{ '&:last-child td, &:last-child th': { border: 0 }}}
               >
                 <TableCell component="th" scope="row" sx={{ fontSize: 'h5.fontSize', fontStyle: "italic",fontWeight: "bold" }}>
                   {row.name}
@@ -83,6 +91,8 @@ export const Tables = (props) => {
         </Table>
       
       </TableContainer>
+      </div>
+    </div>
 
       </div>
     </div>

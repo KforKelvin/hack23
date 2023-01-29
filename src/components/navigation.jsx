@@ -1,6 +1,4 @@
 import React from "react";
-import PieChart from "./chat_modal";
-
 
 export const Navigation = (props) => {
   return (
