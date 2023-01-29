@@ -7,11 +7,12 @@ let today = new Date().toISOString().slice(0, 10);
 export default class PieChart extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {grocery:100,dinning:100, gas:100,retail:100,others:100, 
+    this.state = {grocery:100,dinning:100, gas:100,retail:100,others:100, total_cash_back:0, total_spending:500.00,
                   pie: {
                         values: [100,100,100,100,100],
                         labels: ["Grocery","Dining","Gas", "Retail", "Others"], 
-                        type: 'pie'
+                        type: 'pie',
+                        hovertemplate: '%{label} Spending: %{value:$.2f}'
                        },
                   layout: { datarevision: 0, legend: {"orientation": "h"},margin: {l:0, r:0, b:0, t:0},hieght: 300,width: 300,},
                   revision: 0,
@@ -55,10 +56,12 @@ export default class PieChart extends React.Component {
     let u_retail = this.state.retail;
     let u_others = this.state.others;
     let vals = [u_grocery,u_dinning,u_gas, u_retail, u_others];
+    this.setState({total_spending: u_grocery+u_dinning+u_gas+u_retail+u_others});
     
     const current = { values: vals,
-                      labels: ["Grocery","Dinning","Gas", "Retail", "Others"], 
-                      type: 'pie'
+                      labels: ["Grocery","Dining","Gas", "Retail", "Others"], 
+                      type: 'pie',
+                      hovertemplate: '%{label} Spending: %{value:$.2f}'
                     };
 
     this.setState({ pie: current });
@@ -94,9 +97,11 @@ export default class PieChart extends React.Component {
     let cash_others = u_others * other * 0.01;
     
     let cash_back_vals = [cash_grocery, cash_gas, cash_retail, cash_dinning, cash_others ];
+    this.setState({total_cash_back: offer/12 - fee/12 + cash_grocery + cash_gas + cash_retail + cash_dinning + cash_others});
     const cash__back_current = { values: cash_back_vals,
-      labels: ["Grocery","Dinning","Gas", "Retail", "Others"], 
-      type: 'pie'
+      labels: ["Grocery","Dining","Gas", "Retail", "Others"], 
+      type: 'pie',
+      hovertemplate: '%{label} Cashback: %{value:$.2f}'
     }
     this.setState({ cash_back_pie: cash__back_current });
   }
@@ -114,71 +119,88 @@ export default class PieChart extends React.Component {
           </div>
         </div>
         
-        <div className='text-center' >
-          <div className='pie-row'>
-            <div>
-              <h3>My Budget Distribution: </h3>
-              <div className='piechart'>
-                <Plot 
-                  data={[
-                    this.state.pie,
-                  ]}
-                  layout={this.state.layout}
-                  revision={this.state.revision}
-                  graphDiv="graph"
-                />
-              </div>
-            </div>
+        
+        <table class="table">
+          <tbody>
+            <tr>
+              <td>
+                <div className='text-center' >
+                  <div className='pie-row'>
+                    <div>
+                      <h3>My Budget Distribution: </h3>
+                      <div className='piechart'>
+                        <Plot 
+                          data={[
+                            this.state.pie,
+                          ]}
+                          layout={this.state.layout}
+                          revision={this.state.revision}
+                          graphDiv="graph"
+                        />
+                        <h3>Total Spending: $<u>{this.state.total_spending}</u></h3>
+                      </div>
+                    </div>
 
-            <div className='form-col'>
-              <h3>Enter My Monthly Budget:</h3>
-                
-              <form onSubmit={this.handleSubmit}>
-                <label>
-                  Grocery: 
-                  <input type="number" name="grocery" defaultValue={this.state.grocery} onChange={this.handleGroceryChange}/>
-                </label>
+                    <div className='form-col'>
+                      <h3>Enter My Monthly Budget:</h3>
+                        
+                      <form onSubmit={this.handleSubmit}>
+                        <label>
+                          Grocery: 
+                          <input type="number" name="grocery" defaultValue={this.state.grocery} onChange={this.handleGroceryChange}/>
+                        </label>
 
-                <label>
-                  Dinning: 
-                  <input type="number" name="dinning" defaultValue={this.state.dinning} onChange={this.handleDinningChange}/>
-                </label>
+                        <label>
+                          Dinning: 
+                          <input type="number" name="dinning" defaultValue={this.state.dinning} onChange={this.handleDinningChange}/>
+                        </label>
 
-                <label>
-                  Gas: 
-                  <input type="number" name="gas" defaultValue={this.state.gas} onChange={this.handleGasChange}/>
-                </label>
+                        <label>
+                          Gas: 
+                          <input type="number" name="gas" defaultValue={this.state.gas} onChange={this.handleGasChange}/>
+                        </label>
 
-                <label>
-                  Online Retail: 
-                  <input type="number" name="retail" defaultValue={this.state.retail} onChange={this.handleRetailChange}/>
-                </label>
+                        <label>
+                          Online Retail: 
+                          <input type="number" name="retail" defaultValue={this.state.retail} onChange={this.handleRetailChange}/>
+                        </label>
 
-                <label>
-                  Others: 
-                  <input type="number" name="Others" defaultValue={this.state.others} onChange={this.handleOthersChange}/>
-                </label>
-                <input type="submit" value="Submit"/>
-              </form>
+                        <label>
+                          Others: 
+                          <input type="number" name="Others" defaultValue={this.state.others} onChange={this.handleOthersChange}/>
+                        </label>
+                        <input type="submit" value="Submit"/>
+                      </form>
 
-            </div>
-          </div>
-        </div>
+                    </div>
+                  </div>
+                </div>
 
-        {this.state.card === " " ? <p> </p> :
-            <div>
-              {/* Most valuable card for 1st year sign-up */}
-                <h3>Recommended Card: { this.state.card}</h3>
-                <h3>Cashback Sources: </h3>
-                <Plot 
-                    data={[
-                      this.state.cash_back_pie,
-                    ]}
-                    layout={this.state.layout}
-                    revision={this.state.revision}
+
+              </td>
+
+              <td>
+                  {this.state.card === " " ? <p> </p> :
+                  <div>
+                    <h3>Recommended Card: { this.state.card}</h3>
+                    <Plot 
+                        data={[
+                          this.state.cash_back_pie,
+                        ]}
+                        layout={this.state.layout}
+                        revision={this.state.revision}
+
                     />
-              </div>
-        }
+                    <h3>Total Cashback: $<u>{this.state.total_cash_back}</u></h3>
+                  </div>
+                  }
+              </td>
+              <td>Otto</td>
+            </tr>
+          </tbody>
+        </table>
+
+        
     </div>
     );
 
