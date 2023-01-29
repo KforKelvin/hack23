@@ -13,7 +13,7 @@ export default class PieChart extends React.Component {
                         labels: ["Grocery","Dinning","Gas", "Retail", "Others"], 
                         type: 'pie'
                        },
-                  layout: { datarevision: 0},
+                  layout: { datarevision: 0, legend: {"orientation": "h"},margin: {l:0, r:0, b:0, t:0},},
                   revision: 0};
     
     this.handleGroceryChange = this.handleGroceryChange.bind(this);
@@ -58,8 +58,7 @@ export default class PieChart extends React.Component {
     this.setState({ pie: current });
     this.setState({ revision: this.state.revision + 1 });
     this.setState({ layout: { datarevision:this.state.revision + 1,
-                              height: 300,
-                              width: 400,
+                      
                               legend: {"orientation": "h"},
                               margin: {l:0, r:0, b:0, t:0},} });
     
