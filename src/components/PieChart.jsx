@@ -12,7 +12,7 @@ export default class PieChart extends React.Component {
                         values: [100,100,100,100,100],
                         labels: ["Grocery","Dining","Gas", "Retail", "Others"], 
                         type: 'pie',
-                        hovertemplate: '%{label} Spending: %{value:$.2f}'
+                        hovertemplate: '%{label} Spending: %{value:$.2f}<extra></extra>'
                        },
                   layout: { datarevision: 0, legend: {"orientation": "h"},margin: {l:0, r:0, b:0, t:0},hieght: 300,width: 300,},
                   revision: 0,
@@ -61,7 +61,7 @@ export default class PieChart extends React.Component {
     const current = { values: vals,
                       labels: ["Grocery","Dining","Gas", "Retail", "Others"], 
                       type: 'pie',
-                      hovertemplate: '%{label} Spending: %{value:$.2f}'
+                      hovertemplate: '%{label} Spending: %{value:$.2f}<extra></extra>'
                     };
 
     this.setState({ pie: current });
@@ -101,7 +101,7 @@ export default class PieChart extends React.Component {
     const cash__back_current = { values: cash_back_vals,
       labels: ["Grocery","Dining","Gas", "Retail", "Others"], 
       type: 'pie',
-      hovertemplate: '%{label} Cashback: %{value:$.2f}'
+      hovertemplate: '%{label} Cashback: %{value:$.2f}<extra></extra>'
     }
     this.setState({ cash_back_pie: cash__back_current });
   }
@@ -193,7 +193,21 @@ export default class PieChart extends React.Component {
                   </div>
                   }
               </td>
-              <td>Otto</td>
+              <td>
+              {this.state.card === " " ? <p> </p> :
+                  <div>
+                    <h3>Recommended Card: { this.state.card}</h3>
+                    <Plot 
+                        data={[
+                          this.state.cash_back_pie,
+                        ]}
+                        layout={this.state.layout}
+                        revision={this.state.revision}
+                    />
+                    <h3>Total Cashback: $<u>{this.state.total_cash_back}</u></h3>
+                  </div>
+                  }
+              </td>
             </tr>
           </tbody>
         </table>
