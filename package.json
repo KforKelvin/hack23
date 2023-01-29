@@ -1,6 +1,5 @@
 {
   "name": "landingpage-react-template",
-  "homepage": "https://kforkelvin.github.io/hack23/",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.10.5",
