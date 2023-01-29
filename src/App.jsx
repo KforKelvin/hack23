@@ -8,6 +8,7 @@ import "./App.css";
 import { About } from "./components/about";
 import PieChart from "./components/PieChart";
 
+
 export const scroll = new SmoothScroll('a[href*="#"]', {
   speed: 1000,
   speedAsDuration: true,
