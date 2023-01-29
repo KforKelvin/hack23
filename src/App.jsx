@@ -38,8 +38,24 @@ const App = () => {
       <Tables />
       
       <PieChart data={landingPageData.Rows} />
-      <IFrame/>
-
+      
+      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <button type="button"  data-dismiss="modal">Close</button>
+              </button>
+            </div>
+            <div class="modal-body">
+            <IFrame/>
+            </div>
+            <div class="modal-footer">
+              
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

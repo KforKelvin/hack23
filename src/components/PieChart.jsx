@@ -10,7 +10,7 @@ export default class PieChart extends React.Component {
     this.state = {grocery:100,dinning:100, gas:100,retail:100,others:100, 
                   pie: {
                         values: [100,100,100,100,100],
-                        labels: ["Grocery","Dinning","Gas", "Retail", "Others"], 
+                        labels: ["Grocery","Dining","Gas", "Retail", "Others"], 
                         type: 'pie'
                        },
                   layout: { datarevision: 0, legend: {"orientation": "h"},margin: {l:0, r:0, b:0, t:0},hieght: 300,width: 300,},
@@ -18,7 +18,7 @@ export default class PieChart extends React.Component {
                   card:" ",
                   cash_back_pie: {
                     values: [100,100,100,100,100],
-                    labels: ["Grocery","Dinning","Gas", "Retail", "Others"], 
+                    labels: ["Grocery","Dining","Gas", "Retail", "Others"], 
                     type: 'pie'
                   }};
     

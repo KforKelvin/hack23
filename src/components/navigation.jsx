@@ -1,4 +1,6 @@
 import React from "react";
+import PieChart from "./chat_modal";
+
 
 export const Navigation = (props) => {
   return (
@@ -38,6 +40,13 @@ export const Navigation = (props) => {
                 About
               </a>
             </li>
+            <li>
+            {/* <!-- Button trigger modal --> */}
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                Experince Chat
+              </button>
+              
+            </li>
             {/* <li>
               <a href="#services" className="page-scroll">
                 Services
@@ -62,6 +71,7 @@ export const Navigation = (props) => {
           </ul>
         </div>
       </div>
+      
     </nav>
   );
 };
