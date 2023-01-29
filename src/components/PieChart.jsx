@@ -207,7 +207,23 @@ export default class PieChart extends React.Component {
               <td>
               {this.state.card === " " ? <p> </p> :
                   <div>
-                    <h3>Recommended Card: { this.state.card}</h3>
+                                       <select>
+                    <option value="0">American Express Blue Cash Everyday Card (BCE)</option>
+                    <option value="1">American Express Blue Cash Preferred Card (BCP)</option>
+                    <option value="2">American Express Schwab Investor Card</option>
+                    <option value="3">Bank of America Customized Cash Rewards Credit Card</option>
+                    <option value="4">Bank of America Unlimited Cash Rewards Credit Card</option>
+                    <option value="5">Capital One QuixksilverOne Cash Rewards Credit Card</option>
+                    <option value="6">Capital One Quicksilver Cash Rewards Credit Card</option>
+                    <option value="7">Capital One SavorOne Cash Rewards Credit Card</option>
+                    <option value="8">Capital One Savor Cash Rewards Credit Card</option>
+                    <option value="9">Chase mazon Prime Credit Card</option>
+                    <option value="10">Chase Freedom Flex (CFF)</option>
+                    <option value="11">Chase Freedom Unlimited (CFU)</option>
+                    <option value="12">Chase Instacart Credit Card</option>
+                    <option value="13">Costco Anywhere Visa Card</option>
+                    <option value="14">Wells Fargo Active Cash Card</option>
+                   </select>
                     <Plot 
                         data={[
                           this.state.cash_back_pie,
