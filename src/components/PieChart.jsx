@@ -142,7 +142,7 @@ export default class PieChart extends React.Component {
                     </div>
 
                     <div className='form-col'>
-                      <h3>Enter My Monthly Budget:</h3>
+                      <h4>Enter My Monthly Budget:</h4>
                         
                       <form onSubmit={this.handleSubmit}>
                         <label>
