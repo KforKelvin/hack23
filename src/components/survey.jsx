@@ -1,6 +1,8 @@
 import { useState } from "react";
 import React from "react";
 import Button from '@mui/material/Button';
+import PieChart from "./PieChart";
+
 
 
 export const Survey = (props) => {
@@ -89,6 +91,7 @@ export const Survey = (props) => {
     return (
       <div>
         <h2>Recommended Card: { getRecommendedCard()}</h2>
+        <PieChart/>
       </div>
     );
   }
@@ -96,31 +99,38 @@ export const Survey = (props) => {
 
   return (
     <div id="survey" className="text-center">
-    <div className="container">
-      <div className="col-md-10 col-md-offset-1 section-title">
-        <h2>Survey</h2>
-      </div>
-    <div>
-      {currentQuestionIndex === questions.length ? renderResult() :
-        <div className="container">
-          <div className="col-md-10 col-md-offset-1 section-title">
-            <h3>{questions[currentQuestionIndex].question}</h3>
-          </div>
-          <div className="col-md-10 col-md-offset-1 section-title">
-            <ul>
-              {questions[currentQuestionIndex].options.map((option, index) => (
-                <li key={index}>
-                  <button onClick={() => handleAnswerSelection(option)}>{option}</button>
-                </li>
-              ))}
-            </ul>
-          </div>
-          
+      <div className="container">
+        <div className="col-md-10 col-md-offset-1 section-title">
+          <h2>Survey</h2>
         </div>
-      }
+
+        <div>
+          {currentQuestionIndex === questions.length ? renderResult() :
+            <div className="container">
+              <div className="col-md-10 col-md-offset-1 section-title">
+                <h3>{questions[currentQuestionIndex].question}</h3>
+              </div>
+              
+              <div className="col-md-10 col-md-offset-1 section-title">
+                <ul>
+                  {questions[currentQuestionIndex].options.map((option, index) => (
+                    <li key={index}>
+                      <button onClick={() => handleAnswerSelection(option)}>{option}</button>
+                    </li>
+                  ))}
+                </ul>
+              
+              </div>
+            </div>
+
+        }
+        </div>
+      </div>
+
+
     </div>
-    </div>
-    </div>
+
+   
   );
   
 };

@@ -17,16 +17,20 @@
   }
 }
 
-.row {
+.pie-row {
   display: flex;
   margin: auto;
   padding: 10px;
-  width:90%;
+  width: 20%;
+}
+.view-row {
+  display: block;
+  margin: auto;
 }
 
 .form-col {
   display: block;
-  width: 20%;
+  width: 60%;
   padding: 5%;
 
 }
