@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 
 import Plot from 'react-plotly.js';
 
+
+
 let today = new Date().toISOString().slice(0, 10);
 
 export default class PieChart extends React.Component {
@@ -116,6 +118,11 @@ export default class PieChart extends React.Component {
           <div className="col-md-10 col-md-offset-1 section-title">
             <h1> </h1>
             <h2>Credit Card Recommendation</h2>
+            {this.state.card === " " ? <p> </p> :
+                  <div className='text-center'>
+                      <img src={`img/${this.state.card}.png`} className="img-fluid" style={{ width: '50%' }} alt="" />{" "}
+                  </div>
+  }
           </div>
         </div>
         
@@ -125,7 +132,7 @@ export default class PieChart extends React.Component {
             <tr>
               <td>
                 <div className='text-center' >
-                  <div className='pie-row'>
+                  <div className='pie-row' style={{justifyContent:'center' }} >
                     <div>
                       <h3>My Budget Distribution: </h3>
                       <div className='piechart'>
@@ -141,8 +148,11 @@ export default class PieChart extends React.Component {
                       </div>
                     </div>
 
-                    <div className='form-col'>
-                      <h4>Enter My Monthly Budget:</h4>
+
+
+                    <div className='form-col' style={{width:'18%' }} >
+                      <h3>Enter Monthly Budget:</h3>
+
                         
                       <form onSubmit={this.handleSubmit}>
                         <label>
@@ -183,6 +193,8 @@ export default class PieChart extends React.Component {
                   {this.state.card === " " ? <p> </p> :
                   <div>
                     <h3>Recommended Card: { this.state.card}</h3>
+
+
                     <Plot 
                         data={[
                           this.state.cash_back_pie,
@@ -198,7 +210,23 @@ export default class PieChart extends React.Component {
               <td>
               {this.state.card === " " ? <p> </p> :
                   <div>
-                    <h3>Recommended Card: { this.state.card}</h3>
+                                       <select>
+                    <option value="0">American Express Blue Cash Everyday Card (BCE)</option>
+                    <option value="1">American Express Blue Cash Preferred Card (BCP)</option>
+                    <option value="2">American Express Schwab Investor Card</option>
+                    <option value="3">Bank of America Customized Cash Rewards Credit Card</option>
+                    <option value="4">Bank of America Unlimited Cash Rewards Credit Card</option>
+                    <option value="5">Capital One QuixksilverOne Cash Rewards Credit Card</option>
+                    <option value="6">Capital One Quicksilver Cash Rewards Credit Card</option>
+                    <option value="7">Capital One SavorOne Cash Rewards Credit Card</option>
+                    <option value="8">Capital One Savor Cash Rewards Credit Card</option>
+                    <option value="9">Chase mazon Prime Credit Card</option>
+                    <option value="10">Chase Freedom Flex (CFF)</option>
+                    <option value="11">Chase Freedom Unlimited (CFU)</option>
+                    <option value="12">Chase Instacart Credit Card</option>
+                    <option value="13">Costco Anywhere Visa Card</option>
+                    <option value="14">Wells Fargo Active Cash Card</option>
+                   </select>
                     <Plot 
                         data={[
                           this.state.cash_back_pie,
