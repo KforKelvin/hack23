@@ -35,14 +35,10 @@ const App = () => {
       <Navigation />
       <Header data={landingPageData.Header} />
       <About />
-      {/* <Features data={landingPageData.Features}/> */}
       <Tables />
-      {/* <Survey data={landingPageData.Rows} /> */}
       
-      <PieChart/>
-      {/* <iframe width="600px" height="600px" src={"https://web.powerva.microsoft.com/environments/Default-68f381e3-46da-47b9-ba57-6f322b8f0da1/bots/new_bot_86dadcbcd5114e3ab7435ca0f7b1806d/webchat"}/>       */}
+      <PieChart data={landingPageData.Rows} />
       <IFrame/>
-      {/* <endSurvey/> */}
 
     </div>
   );
