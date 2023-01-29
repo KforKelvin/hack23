@@ -142,7 +142,7 @@ export default class PieChart extends React.Component {
               <input type="submit" value="Submit"/>
             </form>
 
-            {this.state.card === " " ? <p> meh</p> :
+            {this.state.card === " " ? <p> </p> :
               <div>
                 <h2>Recommended Card: { this.state.card}</h2>
               </div>
