@@ -79,9 +79,6 @@ export default class PieChart extends React.Component {
       let benefit = offer/12 - fee/12 + u_grocery * grocery * 0.01 + u_gas * gas * 0.01 + u_retail * online * 0.01 + u_dinning * dining * 0.01 + u_others * other * 0.01;
       benefitsArr[i] = benefit;
     }
-
-    alert(benefitsArr);
-
     let max_benefit_idx = benefitsArr.indexOf(Math.max(...benefitsArr));
 
     this.setState({ card:this.props.data[0][max_benefit_idx].name});    
