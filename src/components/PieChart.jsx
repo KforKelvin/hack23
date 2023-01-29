@@ -167,6 +167,7 @@ export default class PieChart extends React.Component {
 
         {this.state.card === " " ? <p> </p> :
             <div>
+              {/* Most valuable card for 1st year sign-up */}
                 <h3>Recommended Card: { this.state.card}</h3>
                 <h3>Cashback Sources: </h3>
                 <Plot 
