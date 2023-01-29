@@ -14,7 +14,8 @@ export default class PieChart extends React.Component {
                         type: 'pie'
                        },
                   layout: { datarevision: 0, legend: {"orientation": "h"},margin: {l:0, r:0, b:0, t:0},hieght: 300,width: 300,},
-                  revision: 0};
+                  revision: 0
+                ,card:" "};
     
     this.handleGroceryChange = this.handleGroceryChange.bind(this);
     this.handleDinningChange = this.handleDinningChange.bind(this);
@@ -40,15 +41,23 @@ export default class PieChart extends React.Component {
     this.setState({others: event.target.value});
   }
 
+  renderResult(val) {
+    return (
+      <div>
+        <h2>Recommended Card: { val}</h2>
+      </div>
+    );
+  }
+
   handleSubmit(event) {
     
     event.preventDefault();
-    let grocery = this.state.grocery;
-    let dinning = this.state.dinning
-    let gas = this.state.gas;
-    let retail = this.state.retail;
-    let others = this.state.others;
-    let vals = [grocery,dinning,gas, retail, others];
+    let u_grocery = this.state.grocery;
+    let u_dinning = this.state.dinning
+    let u_gas = this.state.gas;
+    let u_retail = this.state.retail;
+    let u_others = this.state.others;
+    let vals = [u_grocery,u_dinning,u_gas, u_retail, u_others];
     
     const current = { values: vals,
                       labels: ["Grocery","Dinning","Gas", "Retail", "Others"], 
@@ -62,9 +71,23 @@ export default class PieChart extends React.Component {
                               width: 300,
                               legend: {"orientation": "h"},
                               margin: {l:0, r:0, b:0, t:0},} });
-    
-    
+  
+    let benefitsArr = new Array(this.props.data[0].length);
+
+    for (let i = 0; i < this.props.data[0].length; i++) {
+      let {offer, fee, grocery, gas, online, dining, other} = this.props.data[0][i];
+      let benefit = offer/12 - fee/12 + u_grocery * grocery * 0.01 + u_gas * gas * 0.01 + u_retail * online * 0.01 + u_dinning * dining * 0.01 + u_others * other * 0.01;
+      benefitsArr[i] = benefit;
+    }
+
+    alert(benefitsArr);
+
+    let max_benefit_idx = benefitsArr.indexOf(Math.max(...benefitsArr));
+
+    this.setState({ card:this.props.data[0][max_benefit_idx].name});    
   }
+
+   
   
   render() {
     
@@ -73,20 +96,6 @@ export default class PieChart extends React.Component {
 
         <div className='row'>
               
-          <div>
-            <h3>Total Cashback: </h3>
-              <div className='piechart'>
-                  <Plot 
-                    data={[
-                      this.state.pie,
-                    ]}
-                    layout={this.state.layout}
-                    revision={this.state.revision}
-                    graphDiv="graph"
-                  />
-              </div>
-
-          </div>
           <div>
             <h3>Total Spending: </h3>
               <div className='piechart'>
@@ -132,6 +141,12 @@ export default class PieChart extends React.Component {
 
               <input type="submit" value="Submit"/>
             </form>
+
+            {this.state.card === " " ? <p> meh</p> :
+              <div>
+                <h2>Recommended Card: { this.state.card}</h2>
+              </div>
+            }
 
           </div>
         </div>

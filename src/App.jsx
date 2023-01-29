@@ -8,6 +8,7 @@ import SmoothScroll from "smooth-scroll";
 import "./App.css";
 import { About } from "./components/about";
 import { Features } from "./components/features";
+import PieChart from "./components/PieChart";
 
 export const scroll = new SmoothScroll('a[href*="#"]', {
   speed: 1000,
@@ -26,7 +27,7 @@ const App = () => {
       <Header data={landingPageData.Header} />
       <Features data={landingPageData.Features}/>
       <Tables />
-      <Survey data={landingPageData.Rows} />
+      <PieChart data={landingPageData.Rows} />
 
       <About />
     </div>
