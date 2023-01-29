@@ -9,15 +9,17 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 
 const useStyles = makeStyles({
-  TableCell: {
-    fontSize: '3rem'
-  }
+  table: {
+    margin: '20px',
+    // backgroundColor: 'ActiveBorder'
+  },
 });
 
 
-export const Tables = (props) => {
-  const classes = useStyles();
 
+export const Tables = (props) => {
+  // const classes = useStyles();
+  const classes = useStyles();
   const rows = [
     { id: 0, company: "American Express", name: "Blue Cash Everyday Card (BCE)", fee: 0, purpose: "Grocery", offer: 200, grocery: 3, gas: 3, online: 3, dining: 1, other: 1 },
     { id: 1, company: "American Express", name: "Blue Cash Preferred Card (BCP)", fee: 95, purpose: "Grocery", offer: 300, grocery: 6, gas: 3, online: 3, dining: 1, other: 1 },
@@ -46,15 +48,15 @@ export const Tables = (props) => {
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead>
             <TableRow>
-              <TableCell sx={{ fontSize: 'h4.fontSize' }}>Name</TableCell>
-              <TableCell align="right" sx={{ fontSize: 'h4.fontSize' }}>Company</TableCell>
-              <TableCell align="right" sx={{ fontSize: 'h4.fontSize' }}>Sign up Fee</TableCell>
-              <TableCell align="right" sx={{ fontSize: 'h4.fontSize' }}>Offer</TableCell>
-              <TableCell align="right" sx={{ fontSize: 'h4.fontSize' }}>Cash back on Grocery&nbsp;(%)</TableCell>
-              <TableCell align="right" sx={{ fontSize: 'h4.fontSize' }}>Cash back on Gas&nbsp;(%)</TableCell>
-              <TableCell align="right" sx={{ fontSize: 'h4.fontSize' }}>Cash back on online retail&nbsp;(%)</TableCell>
-              <TableCell align="right" sx={{ fontSize: 'h4.fontSize' }}>Cash back on Dining&nbsp;(%)</TableCell>
-              <TableCell align="right" sx={{ fontSize: 'h4.fontSize' }}>Cash back on Others&nbsp;(%)</TableCell>
+              <TableCell sx={{ fontSize: 'h4.fontSize', fontWeight: "bold" }}>Name</TableCell>
+              <TableCell align="right" sx={{ fontSize: 'h4.fontSize', fontWeight: "bold"}}>Company</TableCell>
+              <TableCell align="right" sx={{ fontSize: 'h4.fontSize', fontWeight: "bold" }}>Sign up Fee</TableCell>
+              <TableCell align="right" sx={{ fontSize: 'h4.fontSize', fontWeight: "bold" }}>Offer</TableCell>
+              <TableCell align="right" sx={{ fontSize: 'h5.fontSize', fontWeight: "bold", borderTop: 1, borderLeft: 1, borderBottom:1 }}>Grocery&nbsp;(%)</TableCell>
+              <TableCell align="right" sx={{ fontSize: 'h5.fontSize', fontWeight: "bold", borderTop: 1, borderBottom:1  }}>Gas&nbsp;(%)</TableCell>
+              <TableCell align="right" sx={{ fontSize: 'h5.fontSize', fontWeight: "bold", borderTop: 1, borderBottom:1  }}>online retail&nbsp;(%)</TableCell>
+              <TableCell align="right" sx={{ fontSize: 'h5.fontSize', fontWeight: "bold", borderTop: 1, borderBottom:1  }}>Dining&nbsp;(%)</TableCell>
+              <TableCell align="right" sx={{ fontSize: 'h5.fontSize', fontWeight: "bold", borderTop: 1, borderBottom:1, borderRight:1  }}>Others&nbsp;(%)</TableCell>
             </TableRow>
           </TableHead>
           
@@ -64,7 +66,7 @@ export const Tables = (props) => {
                 key={row.name}
                 sx={{ '&:last-child td, &:last-child th': { border: 0 }}}
               >
-                <TableCell component="th" scope="row" sx={{ fontSize: 'h4.fontSize', fontStyle: "italic" }}>
+                <TableCell component="th" scope="row" sx={{ fontSize: 'h5.fontSize', fontStyle: "italic",fontWeight: "bold" }}>
                   {row.name}
                 </TableCell>
                 <TableCell align="right" sx={{ fontSize: 'h5.fontSize' }}>{row.company}</TableCell>
