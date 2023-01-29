@@ -11,6 +11,7 @@
     "@testing-library/user-event": "^7.1.2",
     "emailjs-com": "^2.6.4",
     "plotly": "^1.0.6",
+    "plotly.js": "^2.18.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-plotly.js": "^2.6.0",
