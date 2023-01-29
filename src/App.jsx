@@ -3,6 +3,7 @@ import { Navigation } from "./components/navigation";
 import { Header } from "./components/header";
 import { Tables } from "./components/table";
 import { Survey } from "./components/survey";
+import PieChart from "./components/PieChart";
 import JsonData from "./data/data.json";
 import SmoothScroll from "smooth-scroll";
 import "./App.css";
@@ -27,6 +28,7 @@ const App = () => {
       <Features data={landingPageData.Features}/>
       <Tables />
       <Survey data={landingPageData.Rows} />
+      <PieChart/>
       <About />
     </div>
   );
