@@ -1,5 +1,6 @@
 {
   "name": "landingpage-react-template",
+  "homepage":"https://hack23.gtihub.io/react-gh-pages",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.10.5",
