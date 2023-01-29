@@ -25,11 +25,12 @@ const App = () => {
     <div>
       <Navigation />
       <Header data={landingPageData.Header} />
-      <Features data={landingPageData.Features}/>
+      <About />
+      {/* <Features data={landingPageData.Features}/> */}
       <Tables />
       <Survey data={landingPageData.Rows} />
       <PieChart/>
-      <About />
+      
     </div>
   );
 };
