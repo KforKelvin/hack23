@@ -2,13 +2,10 @@ import React, { useState, useEffect } from "react";
 import { Navigation } from "./components/navigation";
 import { Header } from "./components/header";
 import { Tables } from "./components/table";
-import { Survey } from "./components/survey";
 import JsonData from "./data/data.json";
 import SmoothScroll from "smooth-scroll";
 import "./App.css";
 import { About } from "./components/about";
-import { endSurvey } from "./components/endsurvey";
-import { Features } from "./components/features";
 import PieChart from "./components/PieChart";
 
 export const scroll = new SmoothScroll('a[href*="#"]', {
