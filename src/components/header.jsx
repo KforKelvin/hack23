@@ -14,10 +14,10 @@ export const Header = (props) => {
                 </h1>
                 <p>{props.data ? props.data.paragraph : "Loading"}</p>
                 <a
-                  href="#features"
+                  href="#table"
                   className="btn btn-custom btn-lg page-scroll"
                 >
-                  Learn more about the features
+                  Try it out
                 </a>{" "}
               </div>
             </div>

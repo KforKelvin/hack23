@@ -30,43 +30,32 @@ export const Navigation = (props) => {
         >
           <ul className="nav navbar-nav navbar-right">
 
-            <li>
-              <a href="#survey" className="page-scroll">
-                Survey
-              </a>
-            </li>
-            <li>
-              <a href="#about" className="page-scroll">
-                About
-              </a>
-            </li>
-            <li>
-            {/* <!-- Button trigger modal --> */}
-              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                Experince Chat
-              </button>
-              
-            </li>
-            {/* <li>
-              <a href="#services" className="page-scroll">
-                Services
-              </a>
-            </li> */}
-            {/* <li>
-              <a href="#portfolio" className="page-scroll">
-                Gallery
-              </a>
-            </li> */}
-            {/* <li>
-              <a href="#testimonials" className="page-scroll">
-                Testimonials
-              </a>
-            </li> */}
-            {/* <li>
-              <a href="#team" className="page-scroll">
-                Team
-              </a>
-            </li> */}
+          <li>
+                <a href="#about" className="page-scroll">
+                <button type="button" class="btn btn-light btn-lg" data-toggle="modal">
+                  About
+                </button>
+                </a>
+              </li>
+
+              <li>
+                <a href="#table" className="page-scroll">
+                <button type="button" class="btn btn-light btn-lg" data-toggle="modal">
+                  Find the best card for you
+                </button>
+                </a>
+              </li>
+
+           
+
+              <li>
+                <a data-target="#exampleModal" className="page-scroll">
+                <button type="button" class="btn btn-light btn-lg"  data-toggle="modal" data-target="#exampleModal" >
+                  User Survey
+                </button>
+                </a>
+              </li>
+
             
           </ul>
         </div>
