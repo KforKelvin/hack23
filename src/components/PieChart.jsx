@@ -51,7 +51,7 @@ export default class PieChart extends React.Component {
     let u_retail = parseInt(this.state.retail);
     let u_others = parseInt(this.state.others);
     
-    let curr = this.props.data[0][u_compare_id];
+    let curr = this.props.data[0][this.state.compare_id];
     let compare_grocery = u_grocery * parseInt(curr.grocery) * 0.01;
     let compare_gas= u_gas * parseInt(curr.gas) * 0.01;
     let compare_retail = u_retail * parseInt(curr.online) * 0.01;
@@ -67,7 +67,8 @@ export default class PieChart extends React.Component {
       hovertemplate: '%{label} Cashback: %{value:$.2f}<extra></extra>'
     }
     this.setState({ compare_pie: compare_current });
-    console.log(compare_current);
+    console.log("curr calc",compare_current);
+    console.log("stored calc",this.state.compare_pie);
 
   }
   handleGroceryChange(event) {
@@ -153,7 +154,6 @@ export default class PieChart extends React.Component {
     
     let compare_vals = [compare_grocery, compare_gas, compare_retail, compare_dinning, compare_others ];
     this.setState({compare_cash_back: (parseInt(curr.offer)/12 -  parseInt(curr.fee)/12 + compare_grocery + compare_gas + compare_retail +  compare_dinning+ compare_others).toFixed(2)});
-    console.log(parseInt(curr.grocery));
     
     const compare_current = { values: compare_vals,
       labels: ["Grocery","Dining","Gas", "Retail", "Others"], 
