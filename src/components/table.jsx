@@ -37,8 +37,12 @@ export const Tables = (props) => {
   ];
 
   return (
+    <div id="features" className="text-center">
+    <div className="container">
+      <div className="col-md-10 col-md-offset-1 section-title">
+        <h2>Available Cards</h2>
+      </div>
       <TableContainer component={Paper}>
-       
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead>
             <TableRow>
@@ -77,5 +81,8 @@ export const Tables = (props) => {
         </Table>
       
       </TableContainer>
+
+      </div>
+    </div>
     );
 };

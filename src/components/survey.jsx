@@ -71,8 +71,8 @@ export const Survey = (props) => {
 
     for (let i = 0; i < props.data[0].length; i++) {
       let {offer, fee, grocery, gas, online, dining, other} = props.data[0][i];
-      console.log(offer, fee, grocery, gas, online, dining, other)
-      let benefit = offer - fee + grocery_spending * grocery * 0.01 + gas_spending * gas * 0.01 + retail_spending * online * 0.01 + dining_spending * dining * 0.01 + others_spending * other * 0.01;
+      //console.log(offer, fee, grocery, gas, online, dining, other)
+      let benefit = offer/12 - fee/12 + grocery_spending * grocery * 0.01 + gas_spending * gas * 0.01 + retail_spending * online * 0.01 + dining_spending * dining * 0.01 + others_spending * other * 0.01;
       benefitsArr[i] = benefit;
     }
 
@@ -95,19 +95,31 @@ export const Survey = (props) => {
   
 
   return (
+    <div id="survey" className="text-center">
+    <div className="container">
+      <div className="col-md-10 col-md-offset-1 section-title">
+        <h2>Survey</h2>
+      </div>
     <div>
       {currentQuestionIndex === questions.length ? renderResult() :
-        <>
-          <h2>{questions[currentQuestionIndex].question}</h2>
-          <ul>
-            {questions[currentQuestionIndex].options.map((option, index) => (
-              <li key={index}>
-                <button onClick={() => handleAnswerSelection(option)}>{option}</button>
-              </li>
-            ))}
-          </ul>
-        </>
+        <div className="container">
+          <div className="col-md-10 col-md-offset-1 section-title">
+            <h3>{questions[currentQuestionIndex].question}</h3>
+          </div>
+          <div className="col-md-10 col-md-offset-1 section-title">
+            <ul>
+              {questions[currentQuestionIndex].options.map((option, index) => (
+                <li key={index}>
+                  <button onClick={() => handleAnswerSelection(option)}>{option}</button>
+                </li>
+              ))}
+            </ul>
+          </div>
+          
+        </div>
       }
+    </div>
+    </div>
     </div>
   );
   
