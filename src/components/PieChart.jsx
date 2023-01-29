@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 
 import Plot from 'react-plotly.js';
 
+
+
 let today = new Date().toISOString().slice(0, 10);
 
 export default class PieChart extends React.Component {
@@ -116,6 +118,12 @@ export default class PieChart extends React.Component {
           <div className="col-md-10 col-md-offset-1 section-title">
             <h1> </h1>
             <h2>Credit Card Recommendation</h2>
+            {this.state.card === " " ? <p> </p> :
+                  <div className='text-center'>
+                      <img src={`img/${this.state.card}.png`} className="img-fluid" style={{ width: '50%' }} alt="" />{" "}
+
+                  </div>
+  }
           </div>
         </div>
         
@@ -183,6 +191,8 @@ export default class PieChart extends React.Component {
                   {this.state.card === " " ? <p> </p> :
                   <div>
                     <h3>Recommended Card: { this.state.card}</h3>
+
+
                     <Plot 
                         data={[
                           this.state.cash_back_pie,
