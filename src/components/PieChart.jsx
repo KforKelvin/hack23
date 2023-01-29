@@ -176,6 +176,7 @@ export default class PieChart extends React.Component {
                   </div>
                 </div>
 
+
               </td>
 
               <td>
@@ -188,6 +189,7 @@ export default class PieChart extends React.Component {
                         ]}
                         layout={this.state.layout}
                         revision={this.state.revision}
+
                     />
                     <h3>Total Cashback: $<u>{this.state.total_cash_back}</u></h3>
                   </div>
