@@ -28,7 +28,7 @@ export const Navigation = (props) => {
         >
           <ul className="nav navbar-nav navbar-right">
 
-              <li>
+
                 <a href="#about" className="page-scroll">
                 <button type="button" class="btn btn-light btn-lg" data-toggle="modal">
                   About
@@ -54,35 +54,6 @@ export const Navigation = (props) => {
                 </a>
               </li>
 
-
-              
-            <li>
-
-              
-            {/* <!-- Button trigger modal --> */}
-              
-              
-            </li>
-            {/* <li>
-              <a href="#services" className="page-scroll">
-                Services
-              </a>
-            </li> */}
-            {/* <li>
-              <a href="#portfolio" className="page-scroll">
-                Gallery
-              </a>
-            </li> */}
-            {/* <li>
-              <a href="#testimonials" className="page-scroll">
-                Testimonials
-              </a>
-            </li> */}
-            {/* <li>
-              <a href="#team" className="page-scroll">
-                Team
-              </a>
-            </li> */}
             
           </ul>
         </div>
