@@ -121,7 +121,6 @@ export default class PieChart extends React.Component {
             {this.state.card === " " ? <p> </p> :
                   <div className='text-center'>
                       <img src={`img/${this.state.card}.png`} className="img-fluid" style={{ width: '50%' }} alt="" />{" "}
-
                   </div>
   }
           </div>
@@ -133,7 +132,7 @@ export default class PieChart extends React.Component {
             <tr>
               <td>
                 <div className='text-center' >
-                  <div className='pie-row'>
+                  <div className='pie-row' style={{justifyContent:'center' }} >
                     <div>
                       <h3>My Budget Distribution: </h3>
                       <div className='piechart'>
@@ -149,7 +148,7 @@ export default class PieChart extends React.Component {
                       </div>
                     </div>
 
-                    <div className='form-col'>
+                    <div className='form-col' style={{width:'20%' }} >
                       <h3>Enter My Monthly Budget:</h3>
                         
                       <form onSubmit={this.handleSubmit}>
