@@ -15,7 +15,7 @@
       "grocery": 3,
       "gas": 3,
       "online": 3,
-      "dining": 1,
+      "dinning": 1,
       "other": 1
       },
       {
@@ -28,7 +28,7 @@
       "grocery": 6,
       "gas": 3,
       "online": 3,
-      "dining": 1,
+      "dinning": 1,
       "other": 1
       },
       {
@@ -41,7 +41,7 @@
       "grocery": 1.5,
       "gas": 1.5,
       "online": 1.5,
-      "dining": 1.5,
+      "dinning": 1.5,
       "other": 1.5
       },
       {
@@ -54,7 +54,7 @@
       "grocery": 2,
       "gas": 2,
       "online": 5,
-      "dining": 1,
+      "dinning": 1,
       "other": 1
       },
       {
@@ -67,7 +67,7 @@
       "grocery": 3,
       "gas": 1,
       "online": 1,
-      "dining": 3,
+      "dinning": 3,
       "other": 1
       },
       {
@@ -80,7 +80,7 @@
       "grocery": 3,
       "gas": 3,
       "online": 1.5,
-      "dining": 3,
+      "dinning": 3,
       "other": 1.5
       },
       {
@@ -93,7 +93,7 @@
       "grocery": 2,
       "gas": 2,
       "online": 5,
-      "dining": 2,
+      "dinning": 2,
       "other": 1
       },
       {
@@ -106,16 +106,16 @@
       "grocery": 1,
       "gas": 4,
       "online": 2,
-      "dining": 3,
+      "dinning": 3,
       "other": 1
       },
-      { "id": 13, "company": "Bank of America", "name": "Bank of America Customized Cash Rewards Credit Card", "fee": 0, "purpose": "All", "offer": 0, "grocery": 3, "gas": 3, "online": 3, "dining": 3, "other": 1 },
-{ "id": 14, "company": "Bank of America", "name": "Bank of America Unlimited Cash Rewards Credit Card", "fee": 0, "purpose": "All", "offer": 200, "grocery": 1.5, "gas": 1.5, "online": 1.5, "dining": 1.5, "other": 1.5 },
-{ "id": 15, "company": "Capital One", "name": "Capital One QuixksilverOne Cash Rewards Credit Card", "fee": 39, "purpose": "All", "offer": 0, "grocery": 1.5, "gas": 1.5, "online": 1.5, "dining": 1.5, "other": 1.5 },
-{ "id": 16, "company": "Capital One", "name": "Capital One Quicksilver Cash Rewards Credit Card", "fee": 0, "purpose": "All", "offer": 200, "grocery": 1.5, "gas": 1.5, "online": 1.5, "dining": 1.5, "other": 1.5 },
-{ "id": 17, "company": "Capital One", "name": "Capital One SavorOne Cash Rewards Credit Card", "fee": 0, "purpose": "All", "offer": 200, "grocery": 3, "gas": 1, "online": 3, "dining": 3, "other": 1 },
-{ "id": 18, "company": "Capital One", "name": "Capital One Savor Cash Rewards Credit Card", "fee": 95, "purpose": "All", "offer": 300, "grocery": 3, "gas": 1, "online": 1, "dining": 4, "other": 1 },
-{ "id": 19, "company": "Wells Fargo", "name": "Wells Fargo Active Cash Card", "fee": 0, "purpose": "All", "offer": 250, "grocery": 2, "gas": 2, "online": 2, "dining": 2, "other": 2 }
+      { "id": 13, "company": "Bank of America", "name": "Bank of America Customized Cash Rewards Credit Card", "fee": 0, "purpose": "All", "offer": 0, "grocery": 3, "gas": 3, "online": 3, "dinning": 3, "other": 1 },
+{ "id": 14, "company": "Bank of America", "name": "Bank of America Unlimited Cash Rewards Credit Card", "fee": 0, "purpose": "All", "offer": 200, "grocery": 1.5, "gas": 1.5, "online": 1.5, "dinning": 1.5, "other": 1.5 },
+{ "id": 15, "company": "Capital One", "name": "Capital One QuixksilverOne Cash Rewards Credit Card", "fee": 39, "purpose": "All", "offer": 0, "grocery": 1.5, "gas": 1.5, "online": 1.5, "dinning": 1.5, "other": 1.5 },
+{ "id": 16, "company": "Capital One", "name": "Capital One Quicksilver Cash Rewards Credit Card", "fee": 0, "purpose": "All", "offer": 200, "grocery": 1.5, "gas": 1.5, "online": 1.5, "dinning": 1.5, "other": 1.5 },
+{ "id": 17, "company": "Capital One", "name": "Capital One SavorOne Cash Rewards Credit Card", "fee": 0, "purpose": "All", "offer": 200, "grocery": 3, "gas": 1, "online": 3, "dinning": 3, "other": 1 },
+{ "id": 18, "company": "Capital One", "name": "Capital One Savor Cash Rewards Credit Card", "fee": 95, "purpose": "All", "offer": 300, "grocery": 3, "gas": 1, "online": 1, "dinning": 4, "other": 1 },
+{ "id": 19, "company": "Wells Fargo", "name": "Wells Fargo Active Cash Card", "fee": 0, "purpose": "All", "offer": 250, "grocery": 2, "gas": 2, "online": 2, "dinning": 2, "other": 2 }
 
   ]],
   "Features": [
