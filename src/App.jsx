@@ -22,8 +22,8 @@ const App = () => {
     <div>
       <Navigation />
       <Header data={landingPageData.Header} />
-      <Tables data={landingPageData.Features} />
-      <Survey data={landingPageData.Contact} />
+      <Tables data={landingPageData.Rows} />
+      <Survey data={landingPageData.Rows} />
     </div>
   );
 };
